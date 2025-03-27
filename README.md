@@ -1,6 +1,6 @@
 # App
 
-GymPass app.
+GymPass api.
 
 ## RFs (Requisitos funcionais)
 
