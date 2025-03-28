@@ -27,6 +27,6 @@ GymPass api.
 ## RNFs (Requisitos nao funcionais)
 
 - [ ] A senha do usuario precisa estar criptografada;
-- [ ] Os dados da aplicacao precisam estar persistidos em um banco PostgresSQL;
+- [ x ] Os dados da aplicacao precisam estar persistidos em um banco PostgresSQL;
 - [ ] Todas listas de dados precisam estar paginas com 20 itens por paginas;
 - [ ] O usuario deve ser identificado po um JWT (Json web token);
