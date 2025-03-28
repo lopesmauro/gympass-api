@@ -1,30 +1,30 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-const register = () => {
+const register = async (request: FastifyRequest, reply: FastifyReply) => {
 
 }
 
-const login = () => {
+const login = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
-const getProfile = () => {
+const getProfile = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
-const getCheckInsHistory = () => {
+const getCheckInsHistory = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
-const getCheckInsCount = () => {
+const getCheckInsCount = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
-const updateProfile = () => {
+const updateProfile = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
-const deleteUser = () => {
+const deleteUser = async (request: FastifyRequest, reply: FastifyReply) => {
     
 }
 
