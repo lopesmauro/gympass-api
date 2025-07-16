@@ -1,10 +1,10 @@
-import Fastify from 'fastify'
 import userRoutes from './routes/userRoutes'
+import Fastify, {FastifyRequest, FastifyReply} from "fastify"
 const app = Fastify()
 
 app.register(userRoutes)
 
-app.get('/', async (request, reply) => {
+app.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
   return { message: 'Hello, Gympass API again!' }
 })
 
