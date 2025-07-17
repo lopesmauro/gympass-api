@@ -16,7 +16,7 @@ GymPass api.
 
 ## RNs (Regras de negocio)
 
-- [ ] O usuario nao deve poder se cadastrar com um e-mail duplicado;
+- [ x ] O usuario nao deve poder se cadastrar com um e-mail duplicado;
 - [ ] O usuario nao pode fazer dois check-ins no mesmo dia;
 - [ ] O usuario nao pode fazer check-ins se nao estiver perto(100m) da academia;
 - [ ] O check-in so pode ser validado ate 20 minutos apos criado;
@@ -25,7 +25,7 @@ GymPass api.
 
 ## RNFs (Requisitos nao funcionais)
 
-- [ ] A senha do usuario precisa estar criptografada;
+- [ x ] A senha do usuario precisa estar criptografada;
 - [ x ] Os dados da aplicacao precisam estar persistidos em um banco PostgresSQL;
 - [ ] Todas listas de dados precisam estar paginas com 20 itens por paginas;
-- [ ] O usuario deve ser identificado po um JWT (Json web token);
+- [ x ] O usuario deve ser identificado po um JWT (Json web token);
