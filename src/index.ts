@@ -1,4 +1,4 @@
-import userRoutes from './routes/userRoutes'
+import userRoutes from './routes/user.routes'
 import Fastify, {FastifyRequest, FastifyReply} from "fastify"
 const app = Fastify()
 
