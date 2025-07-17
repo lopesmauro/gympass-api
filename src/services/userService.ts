@@ -1,7 +1,7 @@
 import prisma from "../database/prismaClient"
 import { generateHash, compareHash } from "../security/hash"
 import { Pick } from '@prisma/client/runtime/library'
-import { User } from '@prisma/client'
+import { User, Role } from '@prisma/client'
 
 const loginUser = async (email: string, password: string) => {
     const user = await findUserByEmail(email) as Pick<User, 'id' | 'email' | 'password'>
@@ -19,22 +19,44 @@ const findUserByEmail = async (email: string) => {
 
 const createUser = async (name: string, email: string, password: string) => {
     const hashedPassword = await generateHash(password)
+
     const user = await prisma.user.create({
         data: {
             name,
             email,
-            password: hashedPassword
+            password: hashedPassword,
         }
     })
-
     return user
-} 
+}
 
 
-
+const createAdmin = async (name: string, email: string, password: string) => {
+    const adminCout = await prisma.user.count({
+        where: {
+            role: 'ADMIN'
+        }
+    })
+    let role: Role = Role.USER
+    if (adminCout === 0) {
+        role = Role.ADMIN
+        const hashedPassword = await generateHash(password)
+        const user = await prisma.user.create({
+            data: {
+                name,
+                email,
+                password: hashedPassword,
+                role
+            }
+        })
+        return user
+    }
+    return false
+}
 
 export {
     createUser,
+    createAdmin,
     findUserByEmail,
     loginUser
 }

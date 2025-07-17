@@ -1,6 +1,9 @@
 # App
 
-GymPass api.
+GymPass API é uma plataforma backend robusta e segura para gerenciamento de academias, usuários e check-ins.
+Ela oferece funcionalidades para cadastro, autenticação, controle de acesso por níveis de usuário (administradores e usuários comuns), gerenciamento de check-ins, busca por academias próximas e muito mais.
+
+Desenvolvida com TypeScript, Fastify, Prisma e PostgreSQL, a GymPass API foi criada para ser escalável, segura e de fácil manutenção, atendendo requisitos funcionais e regras de negócio específicas para o controle de acesso e operações de check-in.
 
 ## RFs (Requisitos funcionais)
 
@@ -16,6 +19,7 @@ GymPass api.
 
 ## RNs (Regras de negocio)
 
+- [ x ] Primeiro usuário cadastrado no sistema será automaticamente promovido a administrador;
 - [ x ] O usuario nao deve poder se cadastrar com um e-mail duplicado;
 - [ ] O usuario nao pode fazer dois check-ins no mesmo dia;
 - [ ] O usuario nao pode fazer check-ins se nao estiver perto(100m) da academia;
