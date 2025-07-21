@@ -15,7 +15,7 @@ Desenvolvida com TypeScript, Fastify, Prisma e PostgreSQL, a GymPass API foi cri
 - [ ] Deve ser possivel o usuario buscar academias pelo nome;
 - [ ] Deve ser possivel o usuario realizer check-in em uma academia;
 - [ ] Deve ser possivel validar o check-in de um usuario;
-- [ ] Deve ser possivel cadastrar uma academia;
+- [ x ] Deve ser possivel cadastrar uma academia;
 
 ## RNs (Regras de negocio)
 
@@ -25,7 +25,7 @@ Desenvolvida com TypeScript, Fastify, Prisma e PostgreSQL, a GymPass API foi cri
 - [ ] O usuario nao pode fazer check-ins se nao estiver perto(100m) da academia;
 - [ ] O check-in so pode ser validado ate 20 minutos apos criado;
 - [ ] O check-in so pode ser validado por adminstradores;
-- [ ] A academia so pode ser cadastrada por adminstradores;
+- [ x ] A academia so pode ser cadastrada por adminstradores;
 
 ## RNFs (Requisitos nao funcionais)
 
