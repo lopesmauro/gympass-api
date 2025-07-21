@@ -1,10 +1,5 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
-
-interface MyJwtPayload extends JwtPayload {
-    id: string
-    email: string
-    role: string
-}
+import jwt from 'jsonwebtoken'
+import MyJwtPayload from '../types/jwtPayload'
 
 const generateToken = (payload: MyJwtPayload): string => {
     const secretKey = process.env.JWT_SECRET_KEY as string
