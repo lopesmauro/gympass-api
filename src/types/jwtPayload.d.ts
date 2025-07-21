@@ -4,4 +4,4 @@ export default interface MyJwtPayload extends JwtPayload {
     id: string
     email: string
     role: string
-}
+}   
