@@ -24,11 +24,6 @@ const register = async (request: FastifyRequest, reply: FastifyReply) => {
     return reply.status(201).send({ message: 'Admin user registered successfully' })
 }
 
-
-
-
-
-
 const login = async (request: FastifyRequest, reply: FastifyReply) => {
     const { email, password } = request.body as { email: string; password: string }
 
@@ -56,33 +51,8 @@ const login = async (request: FastifyRequest, reply: FastifyReply) => {
 }
 
 
-
-
-
-
-
-const getCheckInsHistory = async (request: FastifyRequest, reply: FastifyReply) => {
-
-}
-
-const getCheckInsCount = async (request: FastifyRequest, reply: FastifyReply) => {
-
-}
-
-const updateProfile = async (request: FastifyRequest, reply: FastifyReply) => {
-
-}
-
-const deleteUser = async (request: FastifyRequest, reply: FastifyReply) => {
-
-}
-
 export const userControllers = {
     register,
     login,
-    getCheckInsHistory,
-    getCheckInsCount,
-    updateProfile,
-    deleteUser
 }
 
