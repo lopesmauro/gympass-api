@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
-import { verifyToken } from '../security/jwt';
+import { verifyToken } from '../security/jwt'
 
 const authGuard = async (request: FastifyRequest, reply: FastifyReply) => {
     const headerToken = request.headers['authorization']
@@ -9,13 +9,17 @@ const authGuard = async (request: FastifyRequest, reply: FastifyReply) => {
     const token = headerToken.split(' ')[1]
     try {
         const decoded = verifyToken(token)
+        if (!decoded || typeof decoded === 'string') {
+            return reply.status(401).send({ error: 'Invalid token' })
+        }
         if (decoded instanceof Error) {
             return reply.status(401).send({ error: decoded.message })
         }
+        request.user = decoded
         return
     } catch (error) {
         return reply.status(401).send({ error: 'Invalid token' })
     }
 }
 
-export { authGuard}
+export { authGuard } 

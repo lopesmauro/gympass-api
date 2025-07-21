@@ -1,6 +1,7 @@
 import {FastifyInstance} from "fastify"
 import {userControllers} from "../controllers/userControllers"
-import { authGuard } from "../security/auth.guard";
+import { authGuard } from "../security/auth.guard"
+import { isAdmin } from "../security/isAdmin"
 
 export default async function (fastify: FastifyInstance) {
     fastify.post('/users', userControllers.register);

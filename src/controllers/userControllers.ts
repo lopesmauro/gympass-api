@@ -2,6 +2,7 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { createUser, findUserByEmail, loginUser, createAdmin } from '../services/userService'
 import { generateToken } from '../security/jwt';
 
+
 const register = async (request: FastifyRequest, reply: FastifyReply) => {
     const { name, email, password } = request.body as { name: string; email: string; password: string;}
 
@@ -23,6 +24,11 @@ const register = async (request: FastifyRequest, reply: FastifyReply) => {
     return reply.status(201).send({ message: 'Admin user registered successfully' })
 }
 
+
+
+
+
+
 const login = async (request: FastifyRequest, reply: FastifyReply) => {
     const { email, password } = request.body as { email: string; password: string }
 
@@ -35,9 +41,24 @@ const login = async (request: FastifyRequest, reply: FastifyReply) => {
         return reply.status(401).send({ error: 'Invalid email or password' })
     }
 
-    const token = generateToken({id: verifyLogin.id, email: verifyLogin.email})
-    return reply.status(200).send({message: 'Login sucessful.', token})
+    const token = generateToken({id: verifyLogin.id, email: verifyLogin.email, role: verifyLogin.role})
+    return reply.status(200).send(
+        {
+            message: 'Login sucessful.',
+            token,
+            user: {
+                id: verifyLogin.id,
+                email: verifyLogin.email,
+                role: verifyLogin.role
+            }
+        }
+    )
 }
+
+
+
+
+
 
 
 const getCheckInsHistory = async (request: FastifyRequest, reply: FastifyReply) => {

@@ -4,7 +4,7 @@ import { Pick } from '@prisma/client/runtime/library'
 import { User, Role } from '@prisma/client'
 
 const loginUser = async (email: string, password: string) => {
-    const user = await findUserByEmail(email) as Pick<User, 'id' | 'email' | 'password'>
+    const user = await findUserByEmail(email) as Pick<User, 'id' | 'email' | 'password' | 'role'>
     if (!compareHash(password, user.password)) {
         return false
     }
@@ -29,7 +29,6 @@ const createUser = async (name: string, email: string, password: string) => {
     })
     return user
 }
-
 
 const createAdmin = async (name: string, email: string, password: string) => {
     const adminCout = await prisma.user.count({
