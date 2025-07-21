@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { createUser, findUserByEmail, loginUser, createAdmin } from '../services/userService'
-import { generateToken } from '../security/jwt';
+import { generateToken } from '../security/jwt'
 
 
 const register = async (request: FastifyRequest, reply: FastifyReply) => {

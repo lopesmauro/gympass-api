@@ -1,22 +1,22 @@
-import jwt from 'jsonwebtoken'
+import jwt, { JwtPayload } from 'jsonwebtoken'
 
-interface JwtPayload {
+interface MyJwtPayload extends JwtPayload {
     id: string
     email: string
     role: string
 }
 
-const generateToken = (payload: JwtPayload): string => {
+const generateToken = (payload: MyJwtPayload): string => {
     const secretKey = process.env.JWT_SECRET_KEY as string
     return jwt.sign(payload, secretKey, {
         expiresIn: '1h'    
     })
 }
 
-const verifyToken = (token: string): JwtPayload | Error  => {
+const verifyToken = (token: string): MyJwtPayload | Error  => {
     const secretKey = process.env.JWT_SECRET_KEY as string
     try{
-        return jwt.verify(token, secretKey) as JwtPayload
+        return jwt.verify(token, secretKey) as MyJwtPayload
     } catch (e: unknown) {
         if (e instanceof Error) {
             return new Error('Invalid token')
