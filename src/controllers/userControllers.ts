@@ -1,6 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { createUser, findUserByEmail, loginUser, createAdmin } from '../services/userService'
 import { generateToken } from '../security/jwt'
+import { getCheckInsCount, getCheckInsHistory } from '../services/checkInService'
 
 
 const register = async (request: FastifyRequest, reply: FastifyReply) => {
@@ -27,7 +28,7 @@ const register = async (request: FastifyRequest, reply: FastifyReply) => {
 const login = async (request: FastifyRequest, reply: FastifyReply) => {
     const { email, password } = request.body as { email: string; password: string }
 
-    if (!email || !!password) {
+    if (!email || !password) {
         return reply.status(400).send({ error: 'Email and password are required' })
     }
 
@@ -50,9 +51,40 @@ const login = async (request: FastifyRequest, reply: FastifyReply) => {
     )
 }
 
+const getUserCheckInsHistory = async (request: FastifyRequest, reply: FastifyReply) => {
+    const { page = '1' } = request.query as { page?: string }
+    const userId = request.user?.id
+
+    if (!userId) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+    }
+
+    const parsedPage = Number(page)
+    if (!Number.isInteger(parsedPage) || parsedPage < 1) {
+        return reply.status(400).send({ error: 'Page must be a positive integer' })
+    }
+
+    const checkIns = await getCheckInsHistory(userId, parsedPage)
+
+    return reply.status(200).send(checkIns)
+}
+
+const getUserCheckInsCount = async (request: FastifyRequest, reply: FastifyReply) => {
+    const userId = request.user?.id
+
+    if (!userId) {
+        return reply.status(401).send({ error: 'Unauthorized' })
+    }
+
+    const count = await getCheckInsCount(userId)
+
+    return reply.status(200).send({ count })
+}
+
 
 export const userControllers = {
     register,
     login,
+    getUserCheckInsHistory,
+    getUserCheckInsCount,
 }
-

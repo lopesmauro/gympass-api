@@ -5,5 +5,6 @@ import { gymControllers } from "../controllers/gymController"
 
 export default async function (fastify: FastifyInstance) {
     fastify.post('/gym', {preHandler: [authGuard, isAdmin]}, gymControllers.registerGym)
+    fastify.get('/gyms/search', {preHandler: authGuard}, gymControllers.searchGyms)
+    fastify.get('/gyms/nearby', {preHandler: authGuard}, gymControllers.nearbyGyms)
 }
-
